@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// Capitalise first letter
+
 static inline string toUpperFirst(const string& s) {
     if (s.empty()) return "";
     string t = s;
@@ -38,7 +38,7 @@ int main() {
     racerTwoName = toUpperFirst(racerTwoName);
 
     double frameDelaySeconds = 0.25;
-    cout << "How often do you want updates (seconds, e.g., 0.25): ";
+    cout << "How often do you want updates (seconds, (e.g.) 0.25): ";
     if (!(cin >> frameDelaySeconds) || frameDelaySeconds < 0) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -113,10 +113,10 @@ int main() {
         "is pulling ahead!",
         "takes control of the track!",
         "is leading the race!",
-        "surges forward!"
+        "surges forward! Pile first"
     };
     vector<string> tieComments = {
-        "It's neck and neck!",
+        "It's bunds and bunds!",
         "Both racers dead even!",
         "No separation at all!",
         "They’re locked together!"
@@ -125,10 +125,10 @@ int main() {
     auto applyTileEffect = [&](int& pos, const string& name) {
         if (specialTiles.count(pos)) {
             if (specialTiles[pos] == "powerup") {
-                cout << colour(" >> BOOST << ", "1;33") << " " << colour(name, "33") << " hits a power-up! +3!\n";
+                cout << colour(" >> BOOST << ", "1;33") << " " << colour(name, "33") << " smashed a power-up! +3!\n";
                 pos += 3;
             } else if (specialTiles[pos] == "hazard") {
-                cout << colour(" >> HAZARD << ", "1;31") << " " << colour(name, "31") << " hits a hazard! -2!\n";
+                cout << colour(" >> HAZARD << ", "1;31") << " " << colour(name, "31") << " mbonzied a hazard! -2!\n";
                 pos = max(0, pos - 2);
             }
         }
@@ -160,7 +160,7 @@ int main() {
     // Countdown
     clearScreen();
     cout << "=== ASCII Race Track ===\n";
-    cout << racerOneName << " (" << racerOneSymbol << ") vs "
+    cout << racerOneName << " (" << racerOneSymbol << ") VS  "
          << racerTwoName << " (" << racerTwoSymbol << ") • First to " << maxLaps << " laps wins!\n";
     cout << "Track Length: " << finishLinePosition << " | Race Code: " << seed << "\n\n";
     cout << colour("3...", "1;31") << endl; this_thread::sleep_for(chrono::milliseconds(400));
@@ -227,6 +227,6 @@ int main() {
             this_thread::sleep_for(chrono::milliseconds(static_cast<int>(frameDelaySeconds * 1000)));
     }
 
-    cout << "\nThanks for racing!\n";
+    cout << "\nGo home now the hell !\n";
     return 0;
 }
